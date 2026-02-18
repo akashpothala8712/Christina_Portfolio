@@ -1,2 +1,922 @@
 # Christina_Portfolio
 Christina's repository for her portfolio
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Christina Jane — Creative Portfolio 2025</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Mono:wght@300;400;500&family=Unbounded:wght@400;700;900&display=swap" rel="stylesheet">
+<style>
+* { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+
+:root {
+  /* Exact strawberry image palette */
+  --bg: #BFB09E;           /* warm taupe background */
+  --bg-light: #CEC0AD;     /* lighter taupe */
+  --bg-dark: #A89880;      /* darker taupe */
+  --maroon: #6B1010;       /* deep maroon */
+  --maroon-mid: #8B1A1A;   /* mid maroon */
+  --maroon-bright: #A32020;/* brighter maroon accent */
+  --maroon-dark: #3D0808;  /* very deep maroon */
+  --cream: #EDE0CC;        /* warm cream */
+  --ink: #1A0505;          /* near black with red tint */
+  --text: #2D1010;         /* dark maroon text */
+  --text-muted: #6B4A40;   /* muted maroon text */
+}
+
+body {
+  background: var(--bg);
+  font-family: 'DM Mono', monospace;
+  color: var(--text);
+  overflow-x: hidden;
+}
+
+/* Grain overlay */
+body::before {
+  content:'';
+  position:fixed;
+  inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Crect width='1' height='1' fill='%23000' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events:none;
+  z-index:999;
+}
+
+/* ─── NAV ─── */
+nav {
+  position: fixed; top: 0; width: 100%; z-index: 100;
+  padding: 14px 60px;
+  display: flex; justify-content: space-between; align-items: center;
+  background: rgba(191,176,158,0.92);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(107,16,16,0.15);
+}
+.nav-logo {
+  font-family: 'Unbounded', sans-serif;
+  font-size: 10px; font-weight: 700; letter-spacing: 4px;
+  color: var(--maroon-dark); text-transform: uppercase;
+}
+.nav-links { display:flex; gap:36px; list-style:none; }
+.nav-links a {
+  font-family: 'DM Mono', monospace;
+  font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+  color: var(--text-muted); text-decoration: none; transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--maroon); }
+
+/* ─── COVER ─── */
+.cover {
+  min-height: 100vh;
+  background: var(--maroon-dark);
+  display: grid; grid-template-columns: 55% 45%;
+  position: relative; overflow: hidden;
+}
+.cover::after {
+  content:'';
+  position:absolute; inset:0;
+  background: radial-gradient(ellipse at 20% 60%, rgba(191,176,158,0.06) 0%, transparent 60%),
+              radial-gradient(ellipse at 90% 10%, rgba(107,16,16,0.5) 0%, transparent 50%);
+  pointer-events:none;
+}
+.cover-left {
+  display:flex; flex-direction:column; justify-content:center;
+  padding: 120px 60px 80px; position:relative; z-index:2;
+}
+.cover-eyebrow {
+  font-family:'DM Mono', monospace; font-size:9px;
+  letter-spacing:5px; text-transform:uppercase;
+  color: rgba(191,176,158,0.5);
+  margin-bottom: 32px;
+  display:flex; align-items:center; gap:14px;
+}
+.cover-eyebrow::before {
+  content:''; display:inline-block;
+  width:36px; height:1px; background: var(--maroon-mid);
+}
+.cover-name-first {
+  font-family:'Cormorant Garamond', serif;
+  font-size: 100px; font-weight: 300; line-height: 0.85;
+  color: var(--bg); letter-spacing: -2px;
+}
+.cover-name-last {
+  font-family:'Cormorant Garamond', serif;
+  font-size: 100px; font-weight: 700; line-height: 0.85;
+  color: var(--maroon-mid); letter-spacing: -2px;
+  font-style: italic;
+}
+.cover-rule { width:56px; height:2px; background:var(--maroon-mid); margin: 28px 0; }
+.cover-roles { display:flex; flex-direction:column; gap:8px; margin-bottom: 52px; }
+.cover-role {
+  font-family:'DM Mono', monospace; font-size:9px;
+  letter-spacing:3px; text-transform:uppercase;
+  color: rgba(191,176,158,0.55);
+  padding-left:14px; border-left:2px solid var(--maroon-mid);
+}
+.cover-role.highlight { color:var(--bg); border-left-color:var(--bg); }
+.cover-contact { display:flex; flex-direction:column; gap:7px; }
+.cover-contact a {
+  font-family:'DM Mono', monospace; font-size:10px;
+  letter-spacing:1px; color:rgba(191,176,158,0.45);
+  text-decoration:none; transition:color 0.2s;
+}
+.cover-contact a:hover { color:var(--bg); }
+
+.cover-right {
+  position:relative; display:flex; align-items:center;
+  justify-content:center;
+  border-left: 1px solid rgba(191,176,158,0.06);
+}
+.cover-deco {
+  position:absolute; right:-30px;
+  font-family:'Unbounded', sans-serif;
+  font-size:260px; font-weight:900;
+  color:rgba(107,16,16,0.18); line-height:1;
+  user-select:none; letter-spacing:-12px;
+}
+.cover-quote-box {
+  position:relative; z-index:2;
+  max-width:380px; padding:44px;
+  border:1px solid rgba(191,176,158,0.1);
+  background:rgba(107,16,16,0.22);
+}
+.cover-quote {
+  font-family:'Cormorant Garamond', serif;
+  font-size:27px; font-style:italic; font-weight:300;
+  color:var(--bg); line-height:1.55; margin-bottom:24px;
+}
+.cover-quote-attr {
+  font-family:'DM Mono', monospace; font-size:9px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:rgba(191,176,158,0.45);
+}
+.scroll-hint {
+  position:absolute; bottom:40px; left:60px;
+  display:flex; align-items:center; gap:12px; z-index:2;
+}
+.scroll-hint span {
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:4px; text-transform:uppercase;
+  color:rgba(191,176,158,0.35);
+}
+.scroll-line {
+  width:48px; height:1px; background:var(--maroon-mid);
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:.3} 50%{opacity:1} }
+
+/* ─── SECTION BASE ─── */
+section { padding: 96px 60px; position:relative; }
+
+.section-label {
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:5px; text-transform:uppercase;
+  color:var(--maroon-mid); margin-bottom:10px;
+  display:flex; align-items:center; gap:12px;
+}
+.section-label::before {
+  content:''; display:inline-block;
+  width:22px; height:1px; background:var(--maroon-mid);
+}
+.section-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:58px; font-weight:300; line-height:0.95;
+  color:var(--maroon-dark); margin-bottom:52px; letter-spacing:-1px;
+}
+.section-title em { font-style:italic; color:var(--maroon-mid); }
+.section-title strong { font-weight:700; }
+
+/* ─── ABOUT ─── */
+.about { background:var(--bg-light); }
+.about-grid { display:grid; grid-template-columns:1fr 1fr; gap:72px; align-items:start; }
+
+.about-lead {
+  font-family:'Cormorant Garamond', serif;
+  font-size:26px; font-weight:300; font-style:italic;
+  color:var(--maroon); line-height:1.55;
+  border-left:3px solid var(--maroon-mid);
+  padding-left:22px; margin-bottom:28px;
+}
+.about-body p {
+  font-family:'Cormorant Garamond', serif;
+  font-size:19px; line-height:1.85; color:var(--text);
+  margin-bottom:18px;
+}
+.about-body p strong { font-weight:600; color:var(--maroon); }
+
+.about-right {}
+.stat-row { display:grid; grid-template-columns:1fr 1fr; gap:3px; margin-bottom:3px; }
+.stat-box {
+  background:var(--maroon-dark); padding:28px 22px; text-align:center;
+}
+.stat-num {
+  font-family:'Unbounded', sans-serif;
+  font-size:38px; font-weight:700;
+  color:var(--bg); display:block; margin-bottom:8px;
+}
+.stat-label {
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(191,176,158,0.5);
+}
+
+.about-insp {
+  background:var(--cream); padding:32px 28px;
+  border-left:4px solid var(--maroon); margin-top:4px;
+}
+.about-insp p {
+  font-family:'Cormorant Garamond', serif;
+  font-size:19px; font-style:italic; line-height:1.7;
+  color:var(--maroon-dark);
+}
+.about-insp cite {
+  display:block; margin-top:14px;
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--maroon-mid); font-style:normal;
+}
+
+/* ─── APPROACH ─── */
+.approach { background:var(--maroon-dark); }
+.approach .section-title { color:var(--bg); }
+.approach .section-title em { color:rgba(191,176,158,0.5); }
+.approach .section-label { color:rgba(191,176,158,0.4); }
+.approach .section-label::before { background:rgba(191,176,158,0.3); }
+
+.approach-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.approach-card {
+  background:rgba(191,176,158,0.05);
+  border:1px solid rgba(191,176,158,0.07);
+  padding:40px 30px; position:relative; overflow:hidden;
+  transition: background 0.3s;
+}
+.approach-card:hover { background:rgba(191,176,158,0.1); }
+.approach-num {
+  font-family:'Unbounded', sans-serif; font-size:72px;
+  font-weight:900; color:rgba(107,16,16,0.35);
+  position:absolute; top:-12px; right:12px;
+  line-height:1; user-select:none;
+}
+.approach-icon {
+  font-size:28px; margin-bottom:18px; display:block;
+}
+.approach-card-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:28px; font-weight:600; color:var(--bg);
+  margin-bottom:14px; line-height:1.1;
+}
+.approach-card-text {
+  font-family:'Cormorant Garamond', serif;
+  font-size:16px; font-style:italic; color:rgba(191,176,158,0.6);
+  line-height:1.65;
+}
+
+/* ─── WORK ─── */
+.work { background:var(--bg); }
+.work-intro {
+  font-family:'Cormorant Garamond', serif;
+  font-size:21px; font-weight:300; color:var(--text-muted);
+  line-height:1.7; max-width:680px; margin-bottom:56px;
+  border-left:2px solid var(--maroon-mid); padding-left:24px;
+}
+.work-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:2px; }
+.work-card {
+  background:var(--bg-dark); padding:38px 28px;
+  border-top:3px solid var(--maroon-mid);
+  position:relative; overflow:hidden;
+  transition:background 0.3s;
+}
+.work-card:hover { background: var(--bg-light); }
+.work-card-num {
+  position:absolute; top:-10px; right:14px;
+  font-family:'Unbounded', sans-serif; font-size:88px;
+  font-weight:900; color:rgba(107,16,16,0.12);
+  line-height:1; user-select:none;
+}
+.work-industry {
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--maroon-mid); padding:3px 9px;
+  border:1px solid var(--maroon-mid); display:inline-block;
+  margin-bottom:14px;
+}
+.work-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:28px; font-weight:600; color:var(--ink);
+  margin-bottom:12px; line-height:1.1;
+}
+.work-brief {
+  font-family:'Cormorant Garamond', serif;
+  font-size:15px; font-style:italic; color:var(--text-muted);
+  line-height:1.65; margin-bottom:20px;
+}
+.work-did {
+  list-style:none; display:flex; flex-direction:column; gap:6px;
+  margin-bottom:22px;
+}
+.work-did li {
+  font-family:'DM Mono', monospace; font-size:10px;
+  color:var(--text); line-height:1.4;
+}
+.work-did li::before { content:'→ '; color:var(--maroon-mid); }
+.work-link {
+  display:inline-block;
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:var(--maroon-mid); text-decoration:none;
+  border-bottom:1px solid var(--maroon-mid);
+  padding-bottom:2px;
+  transition:color 0.2s;
+}
+.work-link:hover { color:var(--maroon); }
+
+/* ─── CASE STUDY ─── */
+.casestudy { background:var(--maroon-dark); overflow:hidden; }
+.casestudy .section-title { color:var(--bg); }
+.casestudy .section-label { color:rgba(191,176,158,0.4); }
+.casestudy .section-label::before { background:rgba(191,176,158,0.3); }
+
+.cs-grid { display:grid; grid-template-columns:1fr 1fr; gap:60px; align-items:start; }
+.cs-label {
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--maroon-mid); margin-bottom:10px;
+}
+.cs-heading {
+  font-family:'Cormorant Garamond', serif;
+  font-size:32px; font-weight:300; font-style:italic;
+  color:var(--bg); line-height:1.3; margin-bottom:20px;
+}
+.cs-text {
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px; line-height:1.8; color:rgba(191,176,158,0.65);
+  margin-bottom:20px;
+}
+.cs-list { list-style:none; display:flex; flex-direction:column; gap:10px; }
+.cs-list li {
+  font-family:'DM Mono', monospace; font-size:10px;
+  color:rgba(191,176,158,0.6); line-height:1.6;
+  padding-left:16px; position:relative;
+}
+.cs-list li::before {
+  content:'◆'; position:absolute; left:0;
+  color:var(--maroon-mid); font-size:7px; top:1px;
+}
+.cs-divider { width:100%; height:1px; background:rgba(191,176,158,0.1); margin:28px 0; }
+
+/* ─── BLOGS ─── */
+.blogs { background:var(--cream); }
+.blogs .section-title { color:var(--maroon-dark); }
+.blog-intro {
+  font-family:'Cormorant Garamond', serif;
+  font-size:20px; font-weight:300; font-style:italic;
+  color:var(--text-muted); margin-bottom:48px; max-width:600px;
+}
+.blog-list { display:flex; flex-direction:column; gap:0; }
+.blog-item {
+  display:grid; grid-template-columns:72px 1fr 40px;
+  align-items:center; gap:28px;
+  padding:28px 0; border-bottom:1px solid rgba(107,16,16,0.12);
+  text-decoration:none; color:inherit;
+  transition:all 0.2s;
+}
+.blog-item:hover { padding-left:16px; background:rgba(107,16,16,0.04); }
+.blog-num {
+  font-family:'Unbounded', sans-serif; font-size:30px;
+  font-weight:700; color:rgba(107,16,16,0.12); text-align:right;
+}
+.blog-tag {
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:3px; text-transform:uppercase;
+  color:var(--maroon-mid); margin-bottom:6px;
+}
+.blog-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:25px; font-weight:400; color:var(--maroon-dark);
+  line-height:1.2;
+}
+.blog-arrow { font-size:18px; color:var(--maroon-mid); opacity:0; transition:opacity 0.2s; }
+.blog-item:hover .blog-arrow { opacity:1; }
+
+/* ─── SKILLS ─── */
+.skills { background:var(--bg-dark); }
+.skills .section-title { color:var(--maroon-dark); }
+.skills-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:2px; }
+.skill-card {
+  background:var(--bg); padding:34px 24px;
+  border-top:3px solid var(--maroon-mid);
+}
+.skill-card-title {
+  font-family:'Unbounded', sans-serif; font-size:9px;
+  font-weight:700; letter-spacing:2px; text-transform:uppercase;
+  color:var(--maroon); margin-bottom:18px;
+}
+.skill-items { display:flex; flex-direction:column; gap:0; }
+.skill-item {
+  font-family:'DM Mono', monospace; font-size:10px;
+  color:var(--text); padding:7px 0;
+  border-bottom:1px dotted rgba(107,16,16,0.15);
+  line-height:1.4;
+}
+.skill-item:last-child { border-bottom:none; }
+.skill-item::before { content:'▸ '; color:var(--maroon-mid); font-size:9px; }
+
+/* ─── INSPIRATION ─── */
+.inspiration { background:var(--maroon-dark); }
+.inspiration .section-title { color:var(--bg); }
+.inspiration .section-title em { color:rgba(191,176,158,0.45); }
+.inspiration .section-label { color:rgba(191,176,158,0.35); }
+.inspiration .section-label::before { background:rgba(191,176,158,0.25); }
+
+.insp-grid { display:grid; grid-template-columns:1fr 1fr; gap:3px; }
+.insp-card {
+  background:rgba(191,176,158,0.06);
+  border:1px solid rgba(191,176,158,0.07);
+  padding:44px 36px;
+}
+.insp-card.full { grid-column:1/-1; }
+.insp-card-label {
+  font-family:'DM Mono', monospace; font-size:8px;
+  letter-spacing:4px; text-transform:uppercase;
+  color:rgba(191,176,158,0.35); margin-bottom:16px;
+}
+.insp-card-text {
+  font-family:'Cormorant Garamond', serif;
+  font-size:24px; font-weight:300; font-style:italic;
+  color:var(--bg); line-height:1.55;
+}
+.insp-card-text strong { font-weight:600; font-style:normal; color:var(--maroon-mid); }
+
+/* ─── BEYOND BRIEF ─── */
+.beyond { background:var(--bg-light); }
+.beyond .section-title { color:var(--maroon-dark); }
+.beyond-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:3px; margin-top:0; }
+.beyond-card {
+  background:var(--maroon-dark); padding:38px 30px;
+  display:flex; flex-direction:column; gap:16px;
+}
+.beyond-icon { font-size:32px; }
+.beyond-card-title {
+  font-family:'Cormorant Garamond', serif;
+  font-size:24px; font-weight:600; color:var(--bg);
+}
+.beyond-card-text {
+  font-family:'Cormorant Garamond', serif;
+  font-size:15px; font-style:italic; color:rgba(191,176,158,0.5);
+  line-height:1.65;
+}
+
+/* ─── CONTACT ─── */
+.contact {
+  background:var(--maroon-dark); min-height:70vh;
+  display:flex; flex-direction:column;
+  justify-content:center; align-items:center;
+  text-align:center; position:relative; overflow:hidden;
+}
+.contact::before {
+  content:'CJ';
+  position:absolute;
+  font-family:'Unbounded', sans-serif;
+  font-size:440px; font-weight:900;
+  color:rgba(107,16,16,0.15); line-height:1;
+  user-select:none; letter-spacing:-24px;
+  top:50%; left:50%; transform:translate(-50%,-50%);
+}
+.contact-inner { position:relative; z-index:2; padding:40px; }
+.contact-eyebrow {
+  font-family:'DM Mono', monospace; font-size:9px;
+  letter-spacing:5px; text-transform:uppercase;
+  color:rgba(191,176,158,0.35); margin-bottom:24px;
+}
+.contact-heading {
+  font-family:'Cormorant Garamond', serif;
+  font-size:72px; font-weight:300; font-style:italic;
+  color:var(--bg); line-height:0.9; margin-bottom:20px;
+}
+.contact-sub {
+  font-family:'Cormorant Garamond', serif;
+  font-size:21px; font-style:italic;
+  color:rgba(191,176,158,0.45); margin-bottom:52px;
+  max-width:480px; line-height:1.5;
+}
+.contact-open {
+  font-family:'DM Mono', monospace; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(191,176,158,0.3); margin-bottom:16px;
+}
+.contact-open-list {
+  list-style:none; display:flex; flex-direction:column; gap:8px;
+  margin-bottom:48px;
+}
+.contact-open-list li {
+  font-family:'Cormorant Garamond', serif;
+  font-size:18px; font-style:italic;
+  color:rgba(191,176,158,0.55);
+}
+.contact-links { display:flex; gap:3px; justify-content:center; flex-wrap:wrap; }
+.contact-link {
+  font-family:'DM Mono', monospace; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(191,176,158,0.45); text-decoration:none;
+  padding:13px 28px; border:1px solid rgba(191,176,158,0.15);
+  transition:all 0.2s;
+}
+.contact-link:hover { background:var(--maroon-mid); color:var(--bg); border-color:var(--maroon-mid); }
+.contact-link.primary { background:rgba(191,176,158,0.08); color:var(--bg-light); }
+
+/* ─── FOOTER ─── */
+footer {
+  background:var(--maroon-dark);
+  padding:20px 60px;
+  border-top:1px solid rgba(191,176,158,0.1);
+  display:flex; justify-content:space-between; align-items:center;
+}
+footer span {
+  font-family:'DM Mono', monospace; font-size:9px;
+  letter-spacing:2px; text-transform:uppercase;
+  color:rgba(191,176,158,0.25);
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Christina Jane</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#work">Work</a></li>
+    <li><a href="#blogs">Writing</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- COVER -->
+<div class="cover">
+  <div class="cover-left">
+    <div class="cover-eyebrow">Creative Portfolio · 2025</div>
+    <div class="cover-name-first">Christina</div>
+    <div class="cover-name-last">Jane.</div>
+    <div class="cover-rule"></div>
+    <div class="cover-roles">
+      <div class="cover-role highlight">Copywriter</div>
+      <div class="cover-role highlight">Content Strategist</div>
+      <div class="cover-role">Brand Storyteller</div>
+      <div class="cover-role">SEO &amp; AEO Practitioner</div>
+    </div>
+    <div class="cover-contact">
+      <a href="mailto:janechristina545@gmail.com">janechristina545@gmail.com</a>
+      <a href="tel:+919515420789">+91 9515420789</a>
+      <a href="https://www.linkedin.com/in/christina-jane" target="_blank">linkedin.com/in/christina-jane</a>
+      <a href="https://medium.com/@janechristina545" target="_blank">medium.com/@janechristina545</a>
+      <a href="https://www.instagram.com/jane_christy_72" target="_blank">@jane_christy_72</a>
+    </div>
+  </div>
+  <div class="cover-right">
+    <div class="cover-deco">CJ</div>
+    <div class="cover-quote-box">
+      <div class="cover-quote">"Words that build brands, stories that connect hearts."</div>
+      <div class="cover-quote-attr">Brand Content Writing Portfolio</div>
+    </div>
+  </div>
+  <div class="scroll-hint">
+    <div class="scroll-line"></div>
+    <span>Scroll</span>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section class="about" id="about">
+  <div class="section-label">About Me</div>
+  <div class="section-title">I don't just write<br>for brands.<br><em>I write as them.</em></div>
+  <div class="about-grid">
+    <div class="about-body">
+      <p class="about-lead">I'm Christina — a content writer and copywriter who believes every brand has a story worth telling, and every word should earn its place.</p>
+      <p>I've worked with <strong>30+ brands</strong> across tech, healthcare, lifestyle, beauty, real estate, education, and F&B — writing scripts for studio shoots, SEO-driven website copy, social content that stops the scroll, and campaigns that actually resonate.</p>
+      <p>My approach is rooted in empathy. Understand the voice, honour the audience, and craft stories that don't just inform — they connect, build trust, and linger long after the last word.</p>
+      <p>From Instagram captions to full-scale brand strategies, from AEO-optimised blogs to studio shoot scripts — I bring consistency, clarity, and a genuine curiosity for the brands I work with.</p>
+      <div class="about-insp">
+        <p>"What inspires me to write is kindness. How people show it. The unintentional kindness — although a chemical reaction, it's an amazing sight to see."</p>
+        <cite>On writing</cite>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="stat-row">
+        <div class="stat-box"><span class="stat-num">30+</span><span class="stat-label">Brands Managed</span></div>
+        <div class="stat-box"><span class="stat-num">25%</span><span class="stat-label">Raise in 3 Months</span></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-box"><span class="stat-num">7+</span><span class="stat-label">Industries</span></div>
+        <div class="stat-box"><span class="stat-num">AEO</span><span class="stat-label">Practitioner</span></div>
+      </div>
+      <div class="stat-row">
+        <div class="stat-box" style="grid-column:1/-1"><span class="stat-num" style="font-size:28px">Copywriter · Strategist · Storyteller</span><span class="stat-label">Hyderabad, India · Available for Freelance & Full-time</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section class="approach">
+  <div class="section-label">How I Work</div>
+  <div class="section-title"><em>My</em> Approach</div>
+  <div class="approach-grid">
+    <div class="approach-card">
+      <div class="approach-num">01</div>
+      <span class="approach-icon">🎯</span>
+      <div class="approach-card-title">Strategy First</div>
+      <div class="approach-card-text">Every piece of content starts with a question — what does this brand need, who are they speaking to, and what do we want them to feel? Copy without strategy is just noise.</div>
+    </div>
+    <div class="approach-card">
+      <div class="approach-num">02</div>
+      <span class="approach-icon">✍️</span>
+      <div class="approach-card-title">Voice, Not Template</div>
+      <div class="approach-card-text">I don't use formulas. Each brand gets a tone that is entirely theirs — built from research, conversation, and a genuine effort to understand who they are at their core.</div>
+    </div>
+    <div class="approach-card">
+      <div class="approach-num">03</div>
+      <span class="approach-icon">📐</span>
+      <div class="approach-card-title">Craft with Purpose</div>
+      <div class="approach-card-text">Clarity over clutter. Warmth over perfection. Whether it's a caption, a script, or a full campaign — every word earns its place or it doesn't make the cut.</div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK SAMPLES -->
+<section class="work" id="work">
+  <div class="section-label">Sample Works</div>
+  <div class="section-title"><strong>Case</strong> <em>Studies</em></div>
+  <p class="work-intro">A curated selection of brands I've brought to life through words. Different industries, different audiences, different objectives. The tone shifts completely by design. That is the whole point.</p>
+  <div class="work-grid">
+
+    <div class="work-card">
+      <div class="work-card-num">01</div>
+      <div class="work-industry">Tech / Telecom</div>
+      <div class="work-title">Wave Fiber</div>
+      <div class="work-brief">ISP content is tricky. The product is invisible and the audience is impatient. I wrote content that skipped the jargon and got straight to what the reader actually cares about — speed, reliability, and value.</div>
+      <ul class="work-did">
+        <li>SEO website copy with strategic keyword placement</li>
+        <li>AEO-optimised FAQ schema for zero-click search</li>
+        <li>Social content that humanises a technical product</li>
+        <li>5 Instagram Reels scripts — performance-driven</li>
+      </ul>
+      <a href="https://drive.google.com/drive/folders/1vaGily8PeyWbEA1e-cxssP13pGaHVokd" target="_blank" class="work-link">View Case Study →</a>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-num">02</div>
+      <div class="work-industry">Healthcare</div>
+      <div class="work-title">Snore Clinics</div>
+      <div class="work-brief">Healthcare content lives or dies on trust. I wrote for that weight — warm enough to feel personal, informed enough to feel credible, and accessible enough to make someone actually book that appointment.</div>
+      <ul class="work-did">
+        <li>Patient journey narratives that normalise seeking help</li>
+        <li>Educational blog content optimised for search</li>
+        <li>Empathetic social posts that drive engagement</li>
+        <li>Product reel script — empathy-first, problem-solution</li>
+      </ul>
+      <a href="https://drive.google.com/drive/folders/1vaGily8PeyWbEA1e-cxssP13pGaHVokd" target="_blank" class="work-link">View Case Study →</a>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-num">03</div>
+      <div class="work-industry">Lifestyle / Design</div>
+      <div class="work-title">HiLive Interiors</div>
+      <div class="work-brief">Aspirational, visual-first, and emotionally resonant. Interior design content has to make you feel something before you think anything. I wrote copy that complements visuals without competing with them.</div>
+      <ul class="work-did">
+        <li>Lifestyle storytelling for design-conscious audiences</li>
+        <li>Instagram strategy that showcases projects beautifully</li>
+        <li>Copy that lets the spaces do the talking</li>
+      </ul>
+      <a href="https://drive.google.com/drive/folders/1vaGily8PeyWbEA1e-cxssP13pGaHVokd" target="_blank" class="work-link">View Case Study →</a>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-num">04</div>
+      <div class="work-industry">Beauty / Personal Care</div>
+      <div class="work-title">Jawed Habib</div>
+      <div class="work-brief">An established brand with a loyal audience needs content that feels fresh without feeling foreign. I maintained brand voice consistency while bringing seasonal energy — confident, warm, and booking-driven.</div>
+      <ul class="work-did">
+        <li>Brand voice consistency across all touchpoints</li>
+        <li>Seasonal campaign copy — winter hair colour trends</li>
+        <li>Promotional posts that drive appointment bookings</li>
+      </ul>
+      <a href="https://drive.google.com/drive/folders/1vaGily8PeyWbEA1e-cxssP13pGaHVokd" target="_blank" class="work-link">View Case Study →</a>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-num">05</div>
+      <div class="work-industry">Real Estate</div>
+      <div class="work-title">Tricolour Properties</div>
+      <div class="work-brief">Real estate buyers are skeptical. They research, compare, and second-guess. This content was written to cut through that noise — location-specific, keyword-aware, and built to make Tricolour feel like the obvious choice without ever saying it outright.</div>
+      <ul class="work-did">
+        <li>AEO-friendly structure with FAQ schema markup</li>
+        <li>Conversational keywords targeting AI-powered search</li>
+        <li>Location-specific copy for a competitive Hyderabad market</li>
+      </ul>
+      <a href="https://drive.google.com/drive/folders/1vaGily8PeyWbEA1e-cxssP13pGaHVokd" target="_blank" class="work-link">View Case Study →</a>
+    </div>
+
+    <div class="work-card">
+      <div class="work-card-num">06</div>
+      <div class="work-industry">F&amp;B / Local Heritage</div>
+      <div class="work-title">Model Dairy</div>
+      <div class="work-brief">Some brands don't need to be reinvented — they need to be remembered. I wrote content that tapped into nostalgia and community trust, keeping a beloved local brand warm and relevant without losing its soul.</div>
+      <ul class="work-did">
+        <li>Storytelling rooted in nostalgia and local identity</li>
+        <li>Social content that makes everyday products feel special</li>
+        <li>Brand personality that feels familiar, never corporate</li>
+      </ul>
+      <a href="https://drive.google.com/drive/folders/1vaGily8PeyWbEA1e-cxssP13pGaHVokd" target="_blank" class="work-link">View Case Study →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- CASE STUDY DEEP DIVE -->
+<section class="casestudy">
+  <div class="section-label">Deep Dive</div>
+  <div class="section-title"><em>Case Study:</em><br>Building Trust Through<br>Compassionate Content</div>
+  <div class="cs-grid">
+    <div>
+      <div class="cs-label">The Challenge</div>
+      <div class="cs-heading">Snore Clinics needed to establish credibility in a sensitive healthcare space.</div>
+      <div class="cs-text">Medical content intimidates people. The audience was already anxious — they needed reassurance before they would even consider picking up the phone. Every word had to balance clinical accuracy with human warmth.</div>
+      <div class="cs-divider"></div>
+      <div class="cs-label">My Approach</div>
+      <ul class="cs-list">
+        <li>Researched sleep health, snoring causes, and patient concerns deeply before writing a single word</li>
+        <li>Developed patient journey narratives that normalised seeking help without shame or pressure</li>
+        <li>Created educational blog content structured for search with AEO-ready FAQ sections</li>
+        <li>Crafted empathetic social posts that encouraged open conversation about sleep struggles</li>
+        <li>Wrote every piece as if speaking directly to one person — not an audience</li>
+      </ul>
+    </div>
+    <div>
+      <div class="cs-label">The Outcome</div>
+      <div class="cs-heading">A consistent brand presence that felt like a trusted friend, not a clinic.</div>
+      <ul class="cs-list">
+        <li>Consistent brand voice across website, social, and educational materials</li>
+        <li>Content that positioned the clinic as approachable experts rather than cold specialists</li>
+        <li>Patient-centred copy that reduced the perceived barrier to booking</li>
+        <li>Strong organic reach driven by search-optimised educational content</li>
+      </ul>
+      <div class="cs-divider"></div>
+      <div class="cs-label">What I Learned</div>
+      <div class="cs-text">Healthcare content requires deep empathy and radical clarity. The reader is already worried. Your job is to be the voice that makes them feel seen, not sold to. Every word must earn trust before it asks for anything in return.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BLOGS / THOUGHT LEADERSHIP -->
+<section class="blogs" id="blogs">
+  <div class="section-label">Thought Leadership</div>
+  <div class="section-title">Writing on <em>Medium</em></div>
+  <p class="blog-intro">I write publicly about where content is headed. AEO, search evolution, the changing relationship between writers and AI — because I'd rather have data than opinions.</p>
+  <div class="blog-list">
+    <a href="https://medium.com/@janechristina545" target="_blank" class="blog-item">
+      <div class="blog-num">01</div>
+      <div>
+        <div class="blog-tag">SEO / AEO</div>
+        <div class="blog-title">Is SEO Dead? A Content Writer's Honest Take on AEO in 2026</div>
+      </div>
+      <div class="blog-arrow">→</div>
+    </a>
+    <a href="https://medium.com/@janechristina545" target="_blank" class="blog-item">
+      <div class="blog-num">02</div>
+      <div>
+        <div class="blog-tag">Content Strategy</div>
+        <div class="blog-title">From SEO to AEO: Why Your Website Needs AI-Optimized Content</div>
+      </div>
+      <div class="blog-arrow">→</div>
+    </a>
+    <a href="https://medium.com/@janechristina545" target="_blank" class="blog-item">
+      <div class="blog-num">03</div>
+      <div>
+        <div class="blog-tag">AEO / Search</div>
+        <div class="blog-title">Answer Engine Optimization (AEO): Your 2026 Game Changer for Zero-Click Search</div>
+      </div>
+      <div class="blog-arrow">→</div>
+    </a>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section class="skills" id="skills">
+  <div class="section-label">What I Bring</div>
+  <div class="section-title">Skills &amp; <em>Tools</em></div>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <div class="skill-card-title">Writing</div>
+      <div class="skill-items">
+        <div class="skill-item">Brand Copywriting</div>
+        <div class="skill-item">Campaign Copy</div>
+        <div class="skill-item">Studio Shoot Scripts</div>
+        <div class="skill-item">Website &amp; Blog Copy</div>
+        <div class="skill-item">Social Media Copy</div>
+        <div class="skill-item">Brand Voice Dev</div>
+        <div class="skill-item">Long-form Editorial</div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Strategy</div>
+      <div class="skill-items">
+        <div class="skill-item">Content Planning</div>
+        <div class="skill-item">SEO Optimization</div>
+        <div class="skill-item">AEO Implementation</div>
+        <div class="skill-item">FAQ Schema Markup</div>
+        <div class="skill-item">Keyword Research</div>
+        <div class="skill-item">Instagram Meta Keywords</div>
+        <div class="skill-item">Content Calendar</div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Tools</div>
+      <div class="skill-items">
+        <div class="skill-item">Canva (Advanced)</div>
+        <div class="skill-item">Alight Motion</div>
+        <div class="skill-item">WordPress / CMS</div>
+        <div class="skill-item">Sora (AI Mockups)</div>
+        <div class="skill-item">Medium</div>
+        <div class="skill-item">LinkedIn / Reddit</div>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-title">Currently</div>
+      <div class="skill-items">
+        <div class="skill-item">AEO Experiments Live</div>
+        <div class="skill-item">Zero-Click Tracking</div>
+        <div class="skill-item">AI Search Behaviour</div>
+        <div class="skill-item">Voice Search Patterns</div>
+        <div class="skill-item">Schema Performance</div>
+        <div class="skill-item">Cross-Platform Research</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INSPIRATIONS -->
+<section class="inspiration">
+  <div class="section-label">My Writing Philosophy</div>
+  <div class="section-title"><em>Good content</em><br>doesn't just inform.<br>It connects.</div>
+  <div class="insp-grid">
+    <div class="insp-card">
+      <div class="insp-card-label">What moves me</div>
+      <div class="insp-card-text">"Kindness in people. How they show it. The <strong>unintentional kindness</strong> — although a chemical reaction, it's an amazing sight to see. That's why I write. To capture what's human before it disappears into noise."</div>
+    </div>
+    <div class="insp-card">
+      <div class="insp-card-label">My Beliefs</div>
+      <div class="insp-card-text"><strong>Clarity over clutter.</strong> Warmth over perfection. Stories that feel human, not corporate. I believe the best content comes from understanding the <strong>"why"</strong> behind the words — and then getting out of its way.</div>
+    </div>
+    <div class="insp-card full">
+      <div class="insp-card-label">What I Draw From</div>
+      <div class="insp-card-text">Storytelling that prioritises emotion and authenticity. <strong>Minimalist thinking</strong> where every element has purpose. Cultural narratives that honour heritage while embracing evolution. I'm not just a writer — I'm a listener, researcher, and collaborator who believes the best content starts with <strong>genuinely caring</strong> about the people you're writing for.</div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND THE BRIEF -->
+<section class="beyond">
+  <div class="section-label">Beyond the Brief</div>
+  <div class="section-title">When I'm not <em>writing</em></div>
+  <div class="beyond-grid">
+    <div class="beyond-card">
+      <div class="beyond-icon">🐾</div>
+      <div class="beyond-card-title">Animal Foster</div>
+      <div class="beyond-card-text">Fostering rescue animals — 30 and counting. Every one of them taught me something about patience, presence, and unconditional warmth. Skills that show up in everything I write.</div>
+    </div>
+    <div class="beyond-card">
+      <div class="beyond-icon">🎵</div>
+      <div class="beyond-card-title">Carnatic &amp; Western Singer</div>
+      <div class="beyond-card-text">Years of vocal training across two traditions. Music taught me rhythm, structure, and the power of knowing when to hold back. Writing is the same thing in a different key.</div>
+    </div>
+    <div class="beyond-card">
+      <div class="beyond-icon">📖</div>
+      <div class="beyond-card-title">Reader &amp; Learner</div>
+      <div class="beyond-card-text">Fantasy novels, old poetry, learning in public. Using my voice in every space I used to stay quiet. Always reading something that has nothing to do with work — and somehow it always does.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="contact" id="contact">
+  <div class="contact-inner">
+    <div class="contact-eyebrow">Let's Create Something Meaningful</div>
+    <div class="contact-heading">Let's talk.</div>
+    <div class="contact-sub">Whether you're building a brand from scratch or refining your voice — I'd love to help tell your story.</div>
+    <div class="contact-open">Currently open to</div>
+    <ul class="contact-open-list">
+      <li>Content writing roles — in-house or freelance</li>
+      <li>Creative copywriting and scriptwriting projects</li>
+      <li>Brand storytelling collaborations</li>
+      <li>Long-form content and editorial work</li>
+    </ul>
+    <div class="contact-links">
+      <a href="mailto:janechristina545@gmail.com"  class="contact-link primary">Email Me</a>
+      <a href="https://www.linkedin.com/in/christina-jane" target="_blank" class="contact-link">LinkedIn</a>
+      <a href="https://medium.com/@janechristina545" target="_blank" class="contact-link">Medium</a>
+      <a href="https://www.instagram.com/jane_christy_72" target="_blank" class="contact-link">Instagram</a>
+      <a href="https://drive.google.com/drive/folders/1vaGily8PeyWbEA1e-cxssP13pGaHVokd" target="_blank" class="contact-link">Work Samples</a>
+    </div>
+  </div>
+</section>
